@@ -80,8 +80,8 @@ public class OwnedCars {
 	
 	@Override
 	public String toString() {
-		return "OwnedCars [userID=" + userID + ", make=" + make + ", model=" + model + ", color=" + color + ", mileage="
-				+ mileage + ", paymentsLeft=" + paymentsLeft + ", payMin=" + payMin + "]\n";
+		return "OwnedCars [User ID: " + userID + ", Make: " + make + ", Model: " + model + ", Color: " + color + ", Mileage: "
+				+ mileage + ", Payments Left: " + paymentsLeft + ", Minimum Monthly Payment: " + payMin + "]\n";
 	}
 
 	

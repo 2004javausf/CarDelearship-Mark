@@ -117,8 +117,7 @@ public class MainMenu {
 							if(username.equals(d.get(i3).getUsername())) {
 								customerMenu(i3);
 							}
-
-							}
+						}
 					}else {
 						for(int i = 0;i<=3;i++) {
 							if ((users.get(username)).equals(password)) {
@@ -255,7 +254,7 @@ public class MainMenu {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				Logging.LogIt("info", username+" " + password+ " "+ fname+" "+ lname);
+				//Logging.LogIt("info", username+" " + password+ " "+ fname+" "+ lname);
 				System.out.println("You have created your account, please proceed to log in");
 				runMenu();
 			}
@@ -289,7 +288,7 @@ public class MainMenu {
 		while(!exit) {
 			System.out.println("------------------------------------------------------------------");
 			System.out.println("\nWelcome to your account "+ d.get(i3).getFname());
-			Logging.LogIt("info", "Welcome to your account "+ d.get(i3).getFname());
+			//Logging.LogIt("info", "Welcome to your account "+ d.get(i3).getFname());
 			System.out.println("\n------------------------------------------------------------------");
 			System.out.println("Would you like to \n1. View the cars on our lot\n2. View the cars that you own\n3. View your offers\n4. Exit");
 			int option = customerOption();
@@ -371,7 +370,7 @@ public class MainMenu {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-					Logging.LogIt("info", "offers to  a car " +carID+" "+lot.get(i2).getPrice()+ " "+ d.get(i3).getId() + " "+offer+" "+payTime);
+					//Logging.LogIt("info", "offers to  a car " +carID+" "+lot.get(i2).getPrice()+ " "+ d.get(i3).getId() + " "+offer+" "+payTime);
 					System.out.println("Your offer is pending");
 					System.out.println("You will be returned to the customer menu");
 					customerMenu(i3);
@@ -389,7 +388,7 @@ public class MainMenu {
 			for (int k = 0; k < oc.size(); k++) {
 				if(d.get(i3).getId() == oc.get(k).getUserID()) {
 					System.out.println(oc.get(k));
-					Logging.LogIt("info", "owned car "+oc.get(k));
+					//Logging.LogIt("info", "owned car "+oc.get(k));
 					System.out.println("Press any key to return to the customer menu");
 					String a = null;
 					a = sc.nextLine();
@@ -420,7 +419,7 @@ public class MainMenu {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				Logging.LogIt("info", "updating offer "+carID+" "+d.get(i3).getId()+" "+down+ " "+time);
+				//Logging.LogIt("info", "updating offer "+carID+" "+d.get(i3).getId()+" "+down+ " "+time);
 				System.out.println("Your offer has been accepted, refresh to view the changes");
 			}
 			else {
@@ -529,7 +528,7 @@ public class MainMenu {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				Logging.LogIt("info", "adding these things to the lot "+ make+" "+ model+" "+ color+" "+ mileage+" "+ price+" "+ year);
+				//Logging.LogIt("info", "adding these things to the lot "+ make+" "+ model+" "+ color+" "+ mileage+" "+ price+" "+ year);
 				System.out.println("The car has been added to the lot");
 			}else if (option2 == 2) {
 				System.out.println("Please enter the ID of the car you would like to remove");
@@ -539,7 +538,7 @@ public class MainMenu {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				Logging.LogIt("info", "removed car: "+carID);
+				//Logging.LogIt("info", "removed car: "+carID);
 				System.out.println("The car has been removed, please reload to see the changes");
 			}else {
 				employeeMenu();
@@ -559,7 +558,7 @@ public class MainMenu {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				Logging.LogIt("info", "this car and user combo was accepted: "+carID+ " " + userID);
+				//Logging.LogIt("info", "this car and user combo was accepted: "+carID+ " " + userID);
 				System.out.println("The offer has been accepted, please refresh the page to see the changes");
 			}else {
 				System.out.println("You will be returned to the menu");
