@@ -7,9 +7,9 @@ import java.util.List;
 import com.dealership.dao.DealershipDAOImpl;
 
 public class Dealership {
+	// THIS WAS CREATED BECAUSE I THOUGHT I WOULD BE USING MULTIPLE MENU CLASSES
 	static DealershipDAOImpl ddi = new DealershipDAOImpl();
 	public static List<User> uList() {
-//		DealershipDAOImpl ddi = new DealershipDAOImpl();
 		List<User> d = new ArrayList<User>();
 		try {
 			d.addAll(ddi.getUsersList());

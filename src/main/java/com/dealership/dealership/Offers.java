@@ -74,7 +74,7 @@ public class Offers {
 	@Override
 	public String toString() {
 		return "Offers [Car ID: " + carID + ", User ID: " + userID + ", Price: $" + price + ", Down Payment: $" + offer + ", Time to Pay: "
-				+ payTime + "]\n";
+				+ payTime + "Offer Status: Pending]\n";
 	}
 
 

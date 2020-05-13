@@ -254,8 +254,8 @@ public class MainMenu {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//Logging.LogIt("info", username+" " + password+ " "+ fname+" "+ lname);
-				System.out.println("You have created your account, please proceed to log in");
+				Logging.LogIt("info", username+" " + password+ " "+ fname+" "+ lname);
+				System.out.println("You have created your account, please wait a moment as we redirect you to the login page");
 				runMenu();
 			}
 			else {
@@ -288,7 +288,7 @@ public class MainMenu {
 		while(!exit) {
 			System.out.println("------------------------------------------------------------------");
 			System.out.println("\nWelcome to your account "+ d.get(i3).getFname());
-			//Logging.LogIt("info", "Welcome to your account "+ d.get(i3).getFname());
+			Logging.LogIt("info", "Welcome to your account "+ d.get(i3).getFname());
 			System.out.println("\n------------------------------------------------------------------");
 			System.out.println("Would you like to \n1. View the cars on our lot\n2. View the cars that you own\n3. View your offers\n4. Exit");
 			int option = customerOption();
@@ -362,15 +362,25 @@ public class MainMenu {
 					System.out.println("The asking price is: " + lot.get(i2).getPrice());
 					System.out.println("Please enter the down payment you want to put on the car");
 					float offer = Float.parseFloat(sc.nextLine());
+					if (offer<0) {
+						System.out.println("You have entered an invalid option your down payment must be greater than $0");
+						System.out.println("Your down payment will be set to $100, if you would like to change this, go to update offers on the menu");
+						offer = 100;
+					}
 					System.out.println("How much time in months would you like to pay this off?");
 					int payTime = Integer.parseInt(sc.nextLine());
+					if (payTime<1) {
+						System.out.println("You have entered an invalid option, the payment time will be defaulted to 10 months");
+						System.out.println("To change this, go to update offers on the menu");
+						payTime = 10;
+					}
 					DealershipDAOImpl ddi = new DealershipDAOImpl();
 					try {
 						ddi.addOffer(carID, lot.get(i2).getPrice(), d.get(i3).getId(), offer, payTime);
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-					//Logging.LogIt("info", "offers to  a car " +carID+" "+lot.get(i2).getPrice()+ " "+ d.get(i3).getId() + " "+offer+" "+payTime);
+					Logging.LogIt("info", "offers to  a car " +carID+" "+lot.get(i2).getPrice()+ " "+ d.get(i3).getId() + " "+offer+" "+payTime);
 					System.out.println("Your offer is pending");
 					System.out.println("You will be returned to the customer menu");
 					customerMenu(i3);
@@ -388,7 +398,7 @@ public class MainMenu {
 			for (int k = 0; k < oc.size(); k++) {
 				if(d.get(i3).getId() == oc.get(k).getUserID()) {
 					System.out.println(oc.get(k));
-					//Logging.LogIt("info", "owned car "+oc.get(k));
+					Logging.LogIt("info", "owned car "+oc.get(k));
 					System.out.println("Press any key to return to the customer menu");
 					String a = null;
 					a = sc.nextLine();
@@ -419,7 +429,7 @@ public class MainMenu {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				//Logging.LogIt("info", "updating offer "+carID+" "+d.get(i3).getId()+" "+down+ " "+time);
+				Logging.LogIt("info", "updating offer "+carID+" "+d.get(i3).getId()+" "+down+ " "+time);
 				System.out.println("Your offer has been accepted, refresh to view the changes");
 			}
 			else {
@@ -519,16 +529,28 @@ public class MainMenu {
 				String color = sc.nextLine();
 				System.out.println("Please enter the mileage on the car you would like to add");
 				float mileage = Float.parseFloat(sc.nextLine());
+				if (mileage<0) {
+					System.out.println("You have to enter a mileage greater than 0, you will be returned to the employee select menu");
+					employeeSelect(option);
+				}
 				System.out.println("Please enter the price of the car you would like to add");
 				float price = Float.parseFloat(sc.nextLine());
+				if (price<0) {
+					System.out.println("You have to enter a price greater than 0, you will be returned to the employee select menu");
+					employeeSelect(option);
+				}
 				System.out.println("Please enter the year of the car you would like to add");
 				int year = Integer.parseInt(sc.nextLine());
+				if (year<1990) {
+					System.out.println("Cars didn't exist before 1990, please try again at the employee select menu");
+					employeeSelect(option);
+				}
 				try {
 					ddi.addCar(make, model, color, mileage, price, year);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				//Logging.LogIt("info", "adding these things to the lot "+ make+" "+ model+" "+ color+" "+ mileage+" "+ price+" "+ year);
+				Logging.LogIt("info", "adding these things to the lot "+ make+" "+ model+" "+ color+" "+ mileage+" "+ price+" "+ year);
 				System.out.println("The car has been added to the lot");
 			}else if (option2 == 2) {
 				System.out.println("Please enter the ID of the car you would like to remove");
@@ -538,7 +560,7 @@ public class MainMenu {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				//Logging.LogIt("info", "removed car: "+carID);
+				Logging.LogIt("info", "removed car: "+carID);
 				System.out.println("The car has been removed, please reload to see the changes");
 			}else {
 				employeeMenu();
@@ -558,7 +580,7 @@ public class MainMenu {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				//Logging.LogIt("info", "this car and user combo was accepted: "+carID+ " " + userID);
+				Logging.LogIt("info", "this car and user combo was accepted: "+carID+ " " + userID);
 				System.out.println("The offer has been accepted, please refresh the page to see the changes");
 			}else {
 				System.out.println("You will be returned to the menu");
@@ -579,8 +601,5 @@ public class MainMenu {
 		}
 		
 	}
-
-	
-	
 }
 

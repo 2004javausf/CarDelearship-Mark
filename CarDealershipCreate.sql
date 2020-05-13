@@ -1,3 +1,10 @@
+-------WELCOME TO MY CAR DELEARSHIP PROGRAM!
+--DB connection: cardealership.c1heybotdkrw.us-east-2.rds.amazonaws.com
+--username: mhardebeck
+--password: Fuckaws16                             
+--I AM SORRY ABOUT THE PASSWORD, I WASNOT THINKING ABOUT THE POSSIBILITY OF OTHERS SEENG IT WHEN I CREATED IT!
+
+
 CREATE TABLE USERS(
 USER_ID INTEGER PRIMARY KEY,
 USER_NAME VARCHAR(50),
@@ -20,14 +27,14 @@ END;
 
 ALTER TABLE USERS
 ADD CONSTRAINT UQ_USER_NAME
-UNIQUE (USER_ID);
+UNIQUE (USER_NAME);
 
 EXECUTE INSERTUSERS('test','test','John','Doe');
 EXECUTE INSERTUSERS('testy','testy','Jane','Doe');
 SELECT * FROM USERS;
 
 
---will need user id and car id later
+--will need user id and car id later for offers if you want to add offers from here
 --RUN ALL ABOVE HERE TO CREATE USERS TABLE WITH VALUES FROM SCRATCH!
 -------------------------------------------------------------------------------------------------------------------------------
 
