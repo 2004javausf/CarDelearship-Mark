@@ -83,6 +83,6 @@ public class Lot {
 	@Override
 	public String toString() {
 		return "Car ID: " + carID + ", Make: " + make + ", Model: " + model + " Year: " + year + ", Color: " + color + ", Mileage: "
-				+ mileage + ", Price: " + price + "]\n";
+				+ mileage + ", Price: $" + price + "]\n";
 	}
 }
